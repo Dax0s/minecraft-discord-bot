@@ -15,6 +15,7 @@ export async function execute(interaction: CommandInteraction) {
 
     execSync(`tmux send-keys -t ${config.TMUX_SESSION_NAME} \"whitelist add ${interaction.options.data[usernameIndex]}\"`, { encoding: 'utf-8' })
     execSync(`sudo iptables -A INPUT -p tcp -s ${interaction.options.data[ipIndex]} --dport 25565 -j ACCEPT`, { encoding: 'utf-8' })
+    execSync('sudo iptables-save | sudo tee /etc/iptables/rules.v4', { encoding: 'utf-8' })
 
     return interaction.reply("Added")
 }
