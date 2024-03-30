@@ -11,9 +11,9 @@ client.once('ready', () => {
     console.log('Discord bot is ready!')
 })
 
-// client.on('guildAvailable', async (guild) => {
-//     await deployCommands({ guildId: guild.id })
-// })
+client.on('guildAvailable', async (guild) => {
+    await deployCommands({ guildId: guild.id })
+})
 
 client.on('guildCreate', async (guild) => {
     await deployCommands({ guildId: guild.id })
