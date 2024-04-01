@@ -22,5 +22,5 @@ export async function execute(interaction: CommandInteraction) {
     execSync(`sudo ufw allow from ${interaction.options.data[ipIndex].value} to any port 25565 proto tcp`, { encoding: 'utf-8' })
     execSync('sudo iptables-save | sudo tee /etc/iptables/rules.v4', { encoding: 'utf-8' })
 
-    return interaction.reply("Added")
+    return interaction.reply({ content: "Added", ephemeral: true })
 }
